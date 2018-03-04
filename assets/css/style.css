@@ -1,3 +1,32 @@
 header {
 	text-align: center;
 }
+.formClass,
+.trainTable
+{
+background-color:white;
+}
+.formClass{
+	padding:30px 45px 8px 45px;
+	margin: 10px 0px 10px 0px;
+}
+
+body {
+	background-image: url("../Images/trainPic.jpg");
+}
+label {
+	margin-bottom: 8px;
+}
+#submitBtnForm{
+	margin-bottom: 25px;
+}
+
+p {
+	font-family: 'Lobster', cursive;
+}
+h1,h2,h3,h4,
+th, 
+label, input {
+	font-family: 'Merriweather', serif;
+
+}

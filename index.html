@@ -1,80 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Platform 9¾ Schedule Maintenance</title>
 	<!-- Bootsrtap -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	 crossorigin="anonymous">
+	 <!-- Google Fonts	  -->
+	 <link href="https://fonts.googleapis.com/css?family=Lobster|Merriweather" rel="stylesheet">
 	<!-- my CSS -->
 	<link rel="stylesheet" href="assets/css/style.css">
+
 </head>
+
 <body>
-<!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                 <h4 class="modal-title" id="loginModalLabel">Welcome Dept. of Magical Transportation Employee</h4>
-            </div>
-            <div class="modal-body">
-								<p>Please enter your name below to access the <strong>Platform 9¾</strong> Maintenance Website.</p>
-								<form class = "form-inline">
-									<label for="userName">Ministry Representative Name:</label>
-									<input type="text" id = "userName" placeholder = "Name Here">
-								</form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" id = "submitBtn">Submit</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container">
-<!-- Start of Header -->
-<header>
-<h1>UK Ministry of Magic Platform 9¾ Maintenance Form</h1>
-<p>(Please do not try to enchant the computer, it will not work)</p>
-</header>
-</div>
-<div class="container">
-	<div class="row">
-<table class="table">
-		<thead>
-				<tr>
-					<th scope="col"> <span class="glyphicon glyphicon-edit"></span></th>
-					<th scope="col">Train Name</th>
-					<th scope="col">Destination</th>
-					<th scope="col">Frequency (Minutes)</th>
-					<th scope="col">Next Arrival</th>
-					<th scope="col">Minutes Away</th>
-				</tr>
-			</thead>
-			<tbody>
-			</tbody>
-</div>
-<!-- row containing the input forms -->
-<div class="row">
-<form>
+	<!-- Modal -->
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="loginModalLabel">Welcome Dept. of Magical Transportation Employee</h4>
+				</div>
+				<div class="modal-body">
+					<p>Please enter your name below to access the
+						<strong>Platform 9¾</strong> Maintenance Website.</p>
+					<form class="form-inline">
+						<label for="userName">Ministry Representative Name:</label>
+						<input type="text" id="userName" placeholder="Name Here">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" id="submitBtnModal">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<!-- Start of Header -->
+		<header>
+			<h1>UK Ministry of Magic Platform 9¾ Maintenance Form</h1>
+			<p>(Please do not try to enchant the computer, it will not work)</p>
+		</header>
+	</div>
+	<div class="container" id = "schedule">
+			<div class="col-md-1">
+					<!-- spacing -->
+				</div>	
+		<table class="table col-md-10">
+				<thead class = "trainTable">
+					<tr>
+						<th>
+							<span class="glyphicon glyphicon-edit"></span>
+						</th>
+						<th>Train Name</th>
+						<th>Destination</th>
+						<th>Frequency (Minutes)</th>
+						<th>Next Arrival</th>
+						<th>Minutes Away</th>
+					</tr>
+				</thead>
+				<tbody id ="trainDisplay" class = "col-md-10">
+					</tbody>
+			</table>
+			<div class="col-md-1">
+					<!-- spacing -->
+				</div>
+	</div>
+	<!-- row containing the input forms -->
+	<div class="container inputForm	" id = "inputArea">
+			<div class="col-md-1">
+				<!-- spacing -->
+			</div>
+			<div class="col-md-10 formClass">
+				<form>
+					<div class="form-group">
+						<label for="trainName">Train Name</label>
+						<input type="text" class="form-control" id="trainName" placeholder="Example: Hogwarts Express">
+					</div>
+					<div class="form-group">
+						<label for="trainDestination">Train Destination</label>
+						<input type="text" class="form-control" id="trainDestination" placeholder="Example: Hogsmeade">
+					</div>
+					<div class="form-group">
+						<label for="trainDeparture">First Train Departure</label>
+						<input type="text" class="form-control" id="trainDeparture" placeholder="Example: 08:00">
+					</div>
+					<div class="form-group">
+						<label for="trainFrequency">Train Frequency (Min)</label>
+						<input type="text" class="form-control" id="trainFrequency" placeholder="Example: 3">
+					</div>
 
-</form>
-</div>
+					<button class="submitBtn" id="submitBtnForm">Submit</button>
+				</form>
+			</div>
+			<div class="col-md-1 spacer">
+				<!-- spacer -->
+			</div>
+	</div>
 
-<!-- Container Div ends -->
-</div>
-<!-- Jquery link -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- Bootstrap link for JS -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!-- firebase link: -->
-<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
-<!-- My JS link -->
-<script src="assets/javascript/app.js"></script>
-
-
-
+	<!-- Container Div ends -->
+	<!-- Jquery link -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Bootstrap link for JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	 crossorigin="anonymous"></script>
+	<!-- firebase link: -->
+	<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+	<!-- Momentum.JS link -->
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+	<!-- My JS link -->
+	<script src="assets/javascript/app.js"></script>
 </body>
+
 </html>

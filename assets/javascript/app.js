@@ -4,7 +4,10 @@ var header = $("header");
 var schedule = $("#schedule");
 var inputArea = $("#inputArea");
 var footer = $("footer");
-
+var trainName = $("#trainName");
+var trainDes = $("#trainDestination");
+var trainDep = $("#trainDeparture");
+var trainFreq = $("#trainFrequency");
 // Create the userName variable for later
 var userName = "Probably Gavin, he always forgets to enter his username";
 
@@ -19,9 +22,8 @@ var config = {
 };
 firebase.initializeApp(config);
 
-// This somehow stops the enter key from being used to submit forms
 
-// initial function 
+// // initial function 
 // function initializePage(){
 // // hide the divs on the page
 // header.hide();
@@ -37,7 +39,7 @@ $(document).ready(function () {
 	// wind it up
 // initializePage();
 	// On click of the submit button on the Modal
-	$("#submitBtn").click(function () {
+	$("#submitBtnModal").click(function () {
 		event.preventDefault();
 		// update userName to the input from the user
 		userName = $("#userName").val()
@@ -51,5 +53,11 @@ $(document).ready(function () {
 		inputArea.show();
 		footer.show();
 	});
+// when the submit button in the form section is clicked
+	$("#submitBtnForm").click(function(event){
+		// prevent default w/ firefox compatibility
+		event.preventDefault(event);
+
+	})
 
 });
