@@ -4,9 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Platform 9¾ Schedule</title>
+	<title>Platform 9¾ Schedule Maintenance</title>
 	<!-- Bootsrtap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- my CSS -->
+	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 <!-- Modal -->
@@ -16,19 +18,52 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                 <h4 class="modal-title" id="loginModalLabel">Thank you for signing in!</h4>
-
+                 <h4 class="modal-title" id="loginModalLabel">Welcome Dept. of Magical Transportation Employee</h4>
             </div>
             <div class="modal-body">
-                <p>However the account provided is not known.
-                    <BR>If you just got invited to the group, please wait for a day to have the database synchronized.</p>
-                <p>You will now be shown the Demo site.</p>
+								<p>Please enter your name below to access the <strong>Platform 9¾</strong> Maintenance Website.</p>
+								<form class = "form-inline">
+									<label for="userName">Ministry Representative Name:</label>
+									<input type="text" id = "userName" placeholder = "Name Here">
+								</form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id = "submitBtn">Submit</button>
             </div>
         </div>
     </div>
+</div>
+<div class="container">
+<!-- Start of Header -->
+<header>
+<h1>UK Ministry of Magic Platform 9¾ Maintenance Form</h1>
+<p>(Please do not try to enchant the computer, it will not work)</p>
+</header>
+</div>
+<div class="container">
+	<div class="row">
+<table class="table">
+		<thead>
+				<tr>
+					<th scope="col"> <span class="glyphicon glyphicon-edit"></span></th>
+					<th scope="col">Train Name</th>
+					<th scope="col">Destination</th>
+					<th scope="col">Frequency (Minutes)</th>
+					<th scope="col">Next Arrival</th>
+					<th scope="col">Minutes Away</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+</div>
+<!-- row containing the input forms -->
+<div class="row">
+<form>
+
+</form>
+</div>
+
+<!-- Container Div ends -->
 </div>
 <!-- Jquery link -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
