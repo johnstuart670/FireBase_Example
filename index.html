@@ -9,8 +9,8 @@
 	<!-- Bootsrtap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	 crossorigin="anonymous">
-	 <!-- Google Fonts	  -->
-	 <link href="https://fonts.googleapis.com/css?family=Lobster|Merriweather" rel="stylesheet">
+	<!-- Google Fonts	  -->
+	<link href="https://fonts.googleapis.com/css?family=Lobster|Merriweather" rel="stylesheet">
 	<!-- my CSS -->
 	<link rel="stylesheet" href="assets/css/style.css">
 
@@ -48,60 +48,60 @@
 			<p>(Please do not try to enchant the computer, it will not work)</p>
 		</header>
 	</div>
-	<div class="container" id = "schedule">
-			<div class="col-md-1">
-					<!-- spacing -->
-				</div>	
+	<div class="container" id="schedule">
+		<div class="col-md-1">
+			<!-- spacing -->
+		</div>
 		<table class="table col-md-10">
-				<thead class = "trainTable">
-					<tr>
-						<th>
-							<span class="glyphicon glyphicon-edit"></span>
-						</th>
-						<th>Train Name</th>
-						<th>Destination</th>
-						<th>Frequency (Minutes)</th>
-						<th>Next Arrival</th>
-						<th>Minutes Away</th>
-					</tr>
-				</thead>
-				<tbody id ="trainDisplay" class = "col-md-10">
-					</tbody>
-			</table>
-			<div class="col-md-1">
-					<!-- spacing -->
-				</div>
+			<thead class="trainTable">
+				<tr>
+					<th>
+						<span class="glyphicon glyphicon-edit"></span>
+					</th>
+					<th>Train Name</th>
+					<th>Destination</th>
+					<th>Frequency (Minutes)</th>
+					<th>Next Arrival</th>
+					<th>Minutes Away</th>
+				</tr>
+			</thead>
+			<tbody id="trainDisplay">
+			</tbody>
+		</table>
+		<div class="col-md-1">
+			<!-- spacing -->
+		</div>
 	</div>
 	<!-- row containing the input forms -->
-	<div class="container inputForm	" id = "inputArea">
-			<div class="col-md-1">
-				<!-- spacing -->
-			</div>
-			<div class="col-md-10 formClass">
-				<form>
-					<div class="form-group">
-						<label for="trainName">Train Name</label>
-						<input type="text" class="form-control" id="trainName" placeholder="Example: Hogwarts Express">
-					</div>
-					<div class="form-group">
-						<label for="trainDestination">Train Destination</label>
-						<input type="text" class="form-control" id="trainDestination" placeholder="Example: Hogsmeade">
-					</div>
-					<div class="form-group">
-						<label for="trainDeparture">First Train Departure</label>
-						<input type="text" class="form-control" id="trainDeparture" placeholder="Example: 08:00">
-					</div>
-					<div class="form-group">
-						<label for="trainFrequency">Train Frequency (Min)</label>
-						<input type="text" class="form-control" id="trainFrequency" placeholder="Example: 3">
-					</div>
+	<div class="container inputForm	" id="inputArea">
+		<div class="col-md-1">
+			<!-- spacing -->
+		</div>
+		<div class="col-md-10 formClass">
+			<form id="inputForm">
+				<div class="form-group">
+					<label for="trainName">Train Name</label>
+					<input type="text" class="form-control" id="trainName" placeholder="Example: Hogwarts Express">
+				</div>
+				<div class="form-group">
+					<label for="trainDestination">Train Destination</label>
+					<input type="text" class="form-control" id="trainDestination" placeholder="Example: Hogsmeade">
+				</div>
+				<div class="form-group">
+					<label for="trainDeparture">First Train Departure</label>
+					<input type="text" class="form-control" id="trainDeparture" placeholder="Example: 08:00">
+				</div>
+				<div class="form-group">
+					<label for="trainFrequency">Train Frequency (Min)</label>
+					<input type="text" class="form-control" id="trainFrequency" placeholder="Example: 3">
+				</div>
 
-					<button class="submitBtn" id="submitBtnForm">Submit</button>
-				</form>
-			</div>
-			<div class="col-md-1 spacer">
-				<!-- spacer -->
-			</div>
+				<button class="submitBtn" id="submitBtnForm">Submit</button>
+			</form>
+		</div>
+		<div class="col-md-1 spacer">
+			<!-- spacer -->
+		</div>
 	</div>
 
 	<!-- Container Div ends -->

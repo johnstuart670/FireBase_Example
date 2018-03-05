@@ -2,7 +2,8 @@ header {
 	text-align: center;
 }
 .formClass,
-.trainTable
+.trainTable,
+#schedule
 {
 background-color:white;
 }

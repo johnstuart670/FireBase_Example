@@ -8,6 +8,7 @@ var trainName = $("#trainName");
 var trainDes = $("#trainDestination");
 var trainDep = $("#trainDeparture");
 var trainFreq = $("#trainFrequency");
+var trainDisp = $("#trainDisplay");
 // Create the userName variable for later
 var userName = "Probably Gavin, he always forgets to enter his username";
 
@@ -22,7 +23,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-
+var database = firebase.database();
 // // initial function 
 // function initializePage(){
 // // hide the divs on the page
@@ -57,7 +58,46 @@ $(document).ready(function () {
 	$("#submitBtnForm").click(function(event){
 		// prevent default w/ firefox compatibility
 		event.preventDefault(event);
-
-	})
+// get some values
+var name = trainName.val().trim();
+var des = trainDes.val().trim();
+var dep = trainDep.val().trim();
+var freq = trainFreq.val().trim();
+// make a temp object to later push to the database
+var tempObject = {
+	name: name,
+	description: des,
+	departure: dep,
+	frequency: freq
+};
+console.log(tempObject);
+// push the tempObject at the reference point of the root
+database.ref().push(tempObject);
+// reset the inputs
+$("#inputForm")[0].reset();
+	});
+// add event listener of value to the database
+database.ref().on("value", function(snapshot){
+	// for each item at the data reference of root
+trainDisp.empty();
+var snapObject = snapshot.val();
+console.log(snapObject)
+// do a for loop
+for ( var prop in snapObject){
+	// make a new row
+var childSnapshot =	snapObject[prop]
+var finishedObj = $("<tr>");
+// make some variables 
+var xMe = $("<td>");
+var childName = ("<td>" + childSnapshot.name + "</td>");
+var childDes = ("<td>" + childSnapshot.description + "</td>");
+var childDep = ("<td>" + childSnapshot.departure + "</td>");
+var childFreq = ("<td>" + childSnapshot.frequency + "</td>");
+// add some stuff to the xMe 
+xMe.addClass("deleteRow").html('<span class = "glyphicon glyphicon-remove"></span>');
+finishedObj.append(xMe, childName, childDes, childFreq);
+trainDisp.append(finishedObj);
+}
+});
 
 });
