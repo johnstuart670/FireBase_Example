@@ -22,12 +22,13 @@ label {
 	margin-bottom: 25px;
 }
 
-p {
+p, label,
+th {
 	font-family: 'Lobster', cursive;
 }
 h1,h2,h3,h4,
-th, 
-label, input {
+input,
+td {
 	font-family: 'Merriweather', serif;
 
 }
