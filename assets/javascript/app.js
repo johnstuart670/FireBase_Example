@@ -38,7 +38,7 @@ var database = firebase.database();
 // function for the page
 $(document).ready(function () {
 	// wind it up
-// initializePage();
+	// initializePage();
 	// On click of the submit button on the Modal
 	$("#submitBtnModal").click(function () {
 		event.preventDefault();
@@ -54,65 +54,65 @@ $(document).ready(function () {
 		inputArea.show();
 		footer.show();
 	});
-// when the submit button in the form section is clicked
-	$("#submitBtnForm").click(function(event){
+	// when the submit button in the form section is clicked
+	$("#submitBtnForm").click(function (event) {
 		// prevent default w/ firefox compatibility
 		event.preventDefault(event);
-// get some values
-var name = trainName.val().trim();
-var des = trainDes.val().trim();
-var dep = Date.parse(trainDep.val().trim());
-var freq = trainFreq.val().trim();
-// make a temp object to later push to the database
-var tempObject = {
-	name: name,
-	description: des,
-	departure: dep,
-	frequency: freq
-};
-console.log(tempObject);
-// push the tempObject at the reference point of the root
-database.ref().push(tempObject);
-// reset the inputs
-$("#inputForm")[0].reset();
+		// get some values
+		var name = trainName.val().trim();
+		var des = trainDes.val().trim();
+		var dep = trainDep.val().trim();
+		var freq = trainFreq.val().trim();
+		// make a temp object to later push to the database
+		var tempObject = {
+			name: name,
+			description: des,
+			departure: dep,
+			frequency: freq
+		};
+		console.log(tempObject);
+		// push the tempObject at the reference point of the root
+		database.ref().push(tempObject);
+		// reset the inputs
+		$("#inputForm")[0].reset();
 	});
-// add event listener of value to the database
-database.ref().on("value", function(snapshot){
-	// for each item at the data reference of root
-trainDisp.empty();
-var snapObject = snapshot.val();
-// do a for loop
-for ( var prop in snapObject){
-	// make a new row
-var childSnapshot =	snapObject[prop]
-var finishedObj = $("<tr>");
+	// add event listener of value to the database
+	database.ref().on("value", function (snapshot) {
+		// for each item at the data reference of root
+		trainDisp.empty();
+		var snapObject = snapshot.val();
+		console.log("snapObject Log", snapObject);
+		// do a for loop
+		for (var prop in snapObject) {
+			// make a new row
+			var childSnapshot = snapObject[prop]
+			var finishedObj = $("<tr>");
+
+			// make a variable that captures the information from the object in Firebase in Moment format
+			var firstTrain = moment(childSnapshot.departure, "HH:mm");
+			// console.log("firstTrain", firstTrain )
+			// // subtract the times to get a number
+			var timePassed = moment().diff(firstTrain, "minutes");
+			// console.log("timePassed", timePassed);
+			// // get the remainder of the timepassed divided by frequency to get our last variable
+			var timeToNextTrain = timePassed % childSnapshot.frequency;
+			console.log("timetonext", timeToNextTrain);
+// add the timetoNextTrain variable to the current time to get next arrival
+			var trainCalc = moment().add(timeToNextTrain, "minutes").format("HH:mm");
+			console.log("TrainCalc", trainCalc);
 
 
-
-// // make a variable that captures the information from the object in Firebase in Moment format
-// var firstTrain;
-// // capture now
-// var now = moment().format("HH:mm");
-// console.log(now);
-// // subtract the times to get a number
-// var timePassed = parseInt(now - firstTrain);
-// // get the remainder of the timepassed divided by frequency to get our last variable
-// var timeToNextTrain = timePassed % childSnapshot.frequency;
-
-
-
-
-// make some variables 
-var xMe = $("<td>");
-var childName = ("<td>" + childSnapshot.name + "</td>");
-var childDes = ("<td>" + childSnapshot.description + "</td>");
-var childFreq = ("<td>" + childSnapshot.frequency + "</td>");
-// var nextTrain = ("<td>" + trainCalc + "</td>");
-// var nextTrainMin = ("<td>" + timeToNextTrain + "</td>");
-xMe.addClass("deleteRow").html('<span class = "glyphicon glyphicon-remove"></span>');
-finishedObj.append(xMe, childName, childDes, childFreq);
-trainDisp.append(finishedObj);
-}
-});
+			// make some variables 
+			var xMe = $("<td>");
+			var childName = ("<td>" + childSnapshot.name + "</td>");
+			var childDes = ("<td>" + childSnapshot.description + "</td>");
+			var childFreq = ("<td>" + childSnapshot.frequency + "</td>");
+			var nextTrain = ("<td>" + trainCalc + "</td>");
+			var nextTrainMin = ("<td>" + timeToNextTrain + "</td>");
+			xMe.addClass("deleteRow").html('<span class = "glyphicon glyphicon-remove"></span>');
+			finishedObj.append(xMe, childName, childDes, childFreq, nextTrain, nextTrainMin);
+			trainDisp.append(finishedObj);
+		}
+	});
 
 });
