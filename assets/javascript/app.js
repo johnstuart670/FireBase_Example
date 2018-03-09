@@ -9,8 +9,6 @@ var trainDes = $("#trainDestination");
 var trainDep = $("#trainDeparture");
 var trainFreq = $("#trainFrequency");
 var trainDisp = $("#trainDisplay");
-// Create the userName variable for later
-var userName = "Probably Gavin, he always forgets to enter his username";
 
 //  firebase info
 var config = {
@@ -70,7 +68,6 @@ $(document).ready(function () {
 			departure: dep,
 			frequency: freq
 		};
-		console.log(tempObject);
 		// push the tempObject at the reference point of the root
 		database.ref().push(tempObject);
 		// reset the inputs
@@ -81,8 +78,8 @@ $(document).ready(function () {
 		// for each item at the data reference of root
 		trainDisp.empty();
 		var snapObject = snapshot.val();
-		console.log("snapObject Log", snapObject);
 		// do a for loop
+		var i = 0;
 		for (var prop in snapObject) {
 			// make a new row
 			var childSnapshot = snapObject[prop]
@@ -96,23 +93,48 @@ $(document).ready(function () {
 			// console.log("timePassed", timePassed);
 			// // get the remainder of the timepassed divided by frequency to get our last variable
 			var timeToNextTrain = timePassed % childSnapshot.frequency;
-			console.log("timetonext", timeToNextTrain);
 // add the timetoNextTrain variable to the current time to get next arrival
 			var trainCalc = moment().add(timeToNextTrain, "minutes").format("HH:mm");
-			console.log("TrainCalc", trainCalc);
-
 
 			// make some variables 
-			var xMe = $("<td>");
-			var childName = ("<td>" + childSnapshot.name + "</td>");
-			var childDes = ("<td>" + childSnapshot.description + "</td>");
-			var childFreq = ("<td>" + childSnapshot.frequency + "</td>");
-			var nextTrain = ("<td>" + trainCalc + "</td>");
-			var nextTrainMin = ("<td>" + timeToNextTrain + "</td>");
-			xMe.addClass("deleteRow").html('<span class = "glyphicon glyphicon-remove"></span>');
-			finishedObj.append(xMe, childName, childDes, childFreq, nextTrain, nextTrainMin);
+			var changeMe = $("<td>");
+			var childName = $("<td>").text(childSnapshot.name);
+			var childDes = $("<td>").text(childSnapshot.description);
+			var childFreq = $("<td>").text(childSnapshot.frequency);
+			var nextTrain = $("<td>").text(trainCalc);
+			var nextTrainMin = $("<td>").tend(timeToNextTrain);
+			// building our edit button
+			changeMe.addClass("editRow")
+			.html('<span class = "glyphicon glyphicon-pencil"></span>')
+			.attr("data-row", ("row_number" +i));
+			// build our row and append to the finishedObj
+			finishedObj.append(changeMe, childName, childDes, childFreq, nextTrain, nextTrainMin);
 			trainDisp.append(finishedObj);
+			// add to i so we can reference the 
+			i++;
 		}
+// on click of the glyphicons TDs that have class of editRow
+$(".editRow").click(function(snapshot){
+	// select the data Attribute and store in a variable
+	var rowToEdit = $(this).attr("data-row");
+//pop the edit modal
+// console.log("database ref", database.ref([rowToEdit]));
+// get the input from the new modal inputs
+// var newName = $("#newName").val();
+// var newDes = $("#newDestination").val();
+// var newDep = $("#newDeparture").val();
+// var newFreq = $("#newFrequency").val();
+
+// var tempObject = tempObject = {
+// 	name: newName,
+// 	description: newDes,
+// 	departure: newDep,
+// 	frequency: newFreq
+// }
+
+// database.ref([rowToEdit]).push
+})
+
 	});
 
 });
