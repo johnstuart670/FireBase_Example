@@ -22,21 +22,11 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
-// // initial function 
-// function initializePage(){
-// // hide the divs on the page
-// header.hide();
-// schedule.hide();
-// inputArea.hide();
-// footer.hide();
-// // show the modal
-// $("#loginModal").modal("show");
-// }
+
 
 // function for the page
 $(document).ready(function () {
 	// wind it up
-	// initializePage();
 	// On click of the submit button on the Modal
 	$("#submitBtnModal").click(function () {
 		event.preventDefault();
@@ -102,7 +92,7 @@ $(document).ready(function () {
 			var childDes = $("<td>").text(childSnapshot.description);
 			var childFreq = $("<td>").text(childSnapshot.frequency);
 			var nextTrain = $("<td>").text(trainCalc);
-			var nextTrainMin = $("<td>").tend(timeToNextTrain);
+			var nextTrainMin = $("<td>").text(timeToNextTrain);
 			// building our edit button
 			changeMe.addClass("editRow")
 			.html('<span class = "glyphicon glyphicon-pencil"></span>')
@@ -113,27 +103,6 @@ $(document).ready(function () {
 			// add to i so we can reference the 
 			i++;
 		}
-// on click of the glyphicons TDs that have class of editRow
-$(".editRow").click(function(snapshot){
-	// select the data Attribute and store in a variable
-	var rowToEdit = $(this).attr("data-row");
-//pop the edit modal
-// console.log("database ref", database.ref([rowToEdit]));
-// get the input from the new modal inputs
-// var newName = $("#newName").val();
-// var newDes = $("#newDestination").val();
-// var newDep = $("#newDeparture").val();
-// var newFreq = $("#newFrequency").val();
-
-// var tempObject = tempObject = {
-// 	name: newName,
-// 	description: newDes,
-// 	departure: newDep,
-// 	frequency: newFreq
-// }
-
-// database.ref([rowToEdit]).push
-})
 
 	});
 
